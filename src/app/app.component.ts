@@ -17,6 +17,7 @@ export class AppComponent implements AfterViewInit {
       this.engine.renderer.domElement
     );
     this.engine.init();
+    this.engine.addDebugger();
     this.haveSomeFun();
   }
 

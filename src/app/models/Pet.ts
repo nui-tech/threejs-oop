@@ -6,9 +6,8 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 export class Pet {
   private owner?: Player;
   name = 'pet';
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   mesh!: THREE.Object3D;
-
-  constructor() {}
 
   /**
    * Must be called every time initializing a new pet
@@ -19,7 +18,7 @@ export class Pet {
     if (this.mesh) return this;
     const loader = new GLTFLoader();
 
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       loader.load(
         'assets/3D/dog.glb',
         (gltf) => {
@@ -48,6 +47,7 @@ export class Pet {
 
     this.owner.mesh.addEventListener('move', () => {
       const petPosition = this.mesh.position.clone();
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       const ownerPosition = this.owner!.mesh.position.clone();
       const distance = petPosition.distanceTo(ownerPosition);
 

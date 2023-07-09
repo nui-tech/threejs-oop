@@ -2,7 +2,6 @@ import * as THREE from 'three';
 import { Pet } from './Pet';
 import { Player } from './Player';
 import { Terrain } from './Terrain';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 
 export class Game {
   player = new Player();
