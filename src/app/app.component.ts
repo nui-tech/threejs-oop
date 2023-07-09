@@ -10,8 +10,10 @@ import { Game } from './models/Game';
 export class AppComponent implements AfterViewInit {
   title = 'threejs-oop';
   @ViewChild('renderContainer') renderContainer!: ElementRef<HTMLDivElement>;
+  game!: Game;
 
   constructor(private engine: EngineService) {}
+
   ngAfterViewInit(): void {
     this.renderContainer.nativeElement.appendChild(
       this.engine.renderer.domElement
@@ -21,9 +23,13 @@ export class AppComponent implements AfterViewInit {
     this.haveSomeFun();
   }
 
-  haveSomeFun(): void {
-    const game = new Game(this.engine.scene);
-    game.init();
+  private haveSomeFun(): void {
+    this.game = new Game(this.engine.scene);
+    this.game.init();
     this.engine.updateRender();
+  }
+
+  gotoVP(vp: number): void {
+    // this.game.gotoVP(vp);
   }
 }

@@ -2,6 +2,7 @@ import * as THREE from 'three';
 import { Pet } from './Pet';
 import { Player } from './Player';
 import { Terrain } from './Terrain';
+import { Viewpoint } from './Viewpoint';
 
 export class Game {
   player = new Player();
@@ -14,13 +15,13 @@ export class Game {
     this.scene.add(this.player.mesh);
 
     const dog = await new Pet().init();
-
     dog.name = 'dog';
     dog.adoptBy(this.player);
     dog.mesh.position.x = -2;
     dog.mesh.position.z = -2;
-
     this.scene.add(dog.mesh);
+
+    this.addViewpoint();
 
     this.userInputControls();
   }
@@ -77,5 +78,15 @@ export class Game {
         this.player.moveVelocity = 0.1;
       }
     });
+  }
+
+  addViewpoint(){
+    const vp1 = new Viewpoint();
+    vp1.mesh.position.x = -10.5;
+    const vp2 = new Viewpoint();
+    vp2.mesh.position.x = 10.5;
+    vp2.mesh.material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+    this.scene.add(vp1.mesh);
+    this.scene.add(vp2.mesh);
   }
 }

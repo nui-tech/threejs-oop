@@ -38,9 +38,7 @@ export class EngineService {
       this.renderer.domElement
     );
     this.cameraControls.maxPolarAngle = Math.PI / 2;
-
-    
-    
+    this.cameraControls.dollyTo(20);
   }
 
   init(): void {
